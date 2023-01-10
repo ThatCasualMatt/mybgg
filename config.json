@@ -1,18 +1,20 @@
 {
     "project": {
         "name": "mybgg",
-        "title": ""
+        "title": "Our Boardgame Collection"
     },
     "boardgamegeek": {
-        "user_name": "YOUR_BGG_USERNAME",
+        "user_name": "MattH41",
         "extra_params": {
-            "own": 1
+            "own": 1,
+            "preordered": 1
         }
     },
     "algolia": {
-        "app_id": "YOUR_APP_ID",
-        "api_key_search_only": "YOUR_PUBLIC_API_KEY",
-        "index_name": "YOUR_INDEX_NAME",
-        "hits_per_page": 24
+        "app_id": "J088CWAXOA",
+        "api_key_search_only": "c0f7188af9725a6dca6b32cd41baf37f",
+        "index_name": "BGG",
+        "hits_per_page": 48,
+        "sort_by": "asc(name)"
     }
 }
