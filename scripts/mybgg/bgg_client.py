@@ -56,7 +56,7 @@ class BGGClient:
                 yield iterable[i:i + n]
 
         games = []
-        for game_ids_subset in chunks(game_ids, 100):
+        for game_ids_subset in chunks(game_ids, 20):
             url = "/thing/?stats=1&id=" + ",".join([str(id_) for id_ in game_ids_subset])
             data = self._make_request(url)
             games += self._games_list_to_games(data)
@@ -117,6 +117,14 @@ class BGGClient:
         logger.debug("RESPONSE: \n" + prettify_if_xml(response.text))
 
         tree = fromstring(response.text)
+        if tree.tag == "message" and "Your request for this collection has been accepted" in tree.text:
+            if tries < 10:
+                logger.debug("BGG returned \"Your request for this collection has been accepted\", waiting 10 seconds before trying again...")
+                sleep_with_backoff_and_jitter(10, tries)
+                return self._make_request(url, params=params, tries=tries + 1)
+            else:
+                raise BGGException("BGG API request not processed in time, please try again later.")
+
         if tree.tag == "errors":
             raise BGGException(
                 f"BGG returned errors while requesting {response.url} - " +
