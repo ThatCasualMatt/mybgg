@@ -4,10 +4,21 @@
 #
 #    pip-compile scripts/requirements.in
 #
-algoliasearch==3.0.0
-    # via -r scripts/requirements.in
+aiohappyeyeballs==2.4.4
+    # via aiohttp
+aiohttp==3.11.10
+    # via algoliasearch
+aiosignal==1.3.2
+    # via aiohttp
+algoliasearch==4.11.1
+    # via -r requirements.in
+annotated-types==0.7.0
+    # via pydantic
+async-timeout==5.0.1
+    # via algoliasearch
 attrs==23.2.0
     # via
+    #   aiohttp
     #   cattrs
     #   requests-cache
 cattrs==23.2.3
@@ -17,28 +28,57 @@ certifi==2024.7.4
 charset-normalizer==3.1.0
     # via requests
 colorgram-py==1.2.0
-    # via -r scripts/requirements.in
+    # via -r requirements.in
 declxml==1.1.3
-    # via -r scripts/requirements.in
+    # via -r requirements.in
+frozenlist==1.5.0
+    # via
+    #   aiohttp
+    #   aiosignal
 idna==3.7
-    # via requests
+    # via
+    #   requests
+    #   yarl
+multidict==6.1.0
+    # via
+    #   aiohttp
+    #   yarl
 pillow==10.3.0
     # via colorgram-py
 platformdirs==4.1.0
     # via requests-cache
-requests==2.32.0
+propcache==0.2.1
+    # via
+    #   aiohttp
+    #   yarl
+pydantic==2.10.3
+    # via algoliasearch
+pydantic-core==2.27.1
+    # via pydantic
+python-dateutil==2.9.0.post0
+    # via algoliasearch
+requests==2.32.3
     # via
     #   algoliasearch
     #   requests-cache
 requests-cache==1.2.1
-    # via -r scripts/requirements.in
+    # via -r requirements.in
 six==1.16.0
-    # via url-normalize
+    # via
+    #   python-dateutil
+    #   url-normalize
 typing==3.7.4.3
     # via declxml
+typing-extensions==4.12.2
+    # via
+    #   pydantic
+    #   pydantic-core
 url-normalize==1.4.3
     # via requests-cache
 urllib3==1.26.19
     # via
+    #   algoliasearch
     #   requests
     #   requests-cache
+yarl==1.18.3
+    # via aiohttp
